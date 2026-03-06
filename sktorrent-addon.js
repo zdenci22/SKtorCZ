@@ -62,6 +62,9 @@ async function getTitleFromIMDb(imdbId) {
         console.log(`[DEBUG] 🌝 Lokalizovaný názov: ${title}`);
         console.log(`[DEBUG] 🇳️ Originálny názov: ${originalTitle}`);
         console.log(`[DEBUG] 🇳️ IMDB ID: ${imdbId}`);
+        console.log(`[DEBUG] 🇳️ IMDB ID: ${$}`);
+        console.log(`[DEBUG] 🇳️ IMDB ID: ${titleRaw}`);
+        console.log(`[DEBUG] 🇳️ IMDB ID: ${title}`);
         return { title, originalTitle };
     } catch (err) {
         console.error("[ERROR] IMDb scraping zlyhal:", err.message);
@@ -210,4 +213,5 @@ builder.defineCatalogHandler(({ type, id }) => {
 console.log("\ud83d\udccc Manifest debug výpis:", builder.getInterface().manifest);
 serveHTTP(builder.getInterface(), { port: 7000 });
 console.log("\ud83d\ude80 SKTorrent addon beží na http://localhost:7000/manifest.json");
+
 
