@@ -14,7 +14,7 @@ const SEARCH_URL = `${BASE_URL}/torrent/torrents_v2.php`;
 
 const builder = addonBuilder({
     id: "org.stremio.sktorrent",
-    version: "1.0.4",
+    version: "1.0.5",
     name: "SKtorCZ",
     description: "Streamuj torrenty z SKTorrent.eu (filmy aj seriály)",
     types: ["movie", "series"],
@@ -213,6 +213,7 @@ builder.defineCatalogHandler(({ type, id }) => {
 console.log("\ud83d\udccc Manifest debug výpis:", builder.getInterface().manifest);
 serveHTTP(builder.getInterface(), { port: 7000 });
 console.log("\ud83d\ude80 SKTorrent addon beží na http://localhost:7000/manifest.json");
+
 
 
 
