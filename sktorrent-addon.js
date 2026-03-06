@@ -52,7 +52,7 @@ async function getTitleFromIMDb(imdbId) {
         });
         const $ = cheerio.load(res.data);
         const titleRaw = $('title').text().split(' - ')[0].trim();
-        const title = decode(titleRaw);
+        const title = "minecraft";
         const ldJson = $('script[type="application/ld+json"]').html();
         let originalTitle = title;
         if (ldJson) {
@@ -213,6 +213,7 @@ builder.defineCatalogHandler(({ type, id }) => {
 console.log("\ud83d\udccc Manifest debug výpis:", builder.getInterface().manifest);
 serveHTTP(builder.getInterface(), { port: 7000 });
 console.log("\ud83d\ude80 SKTorrent addon beží na http://localhost:7000/manifest.json");
+
 
 
 
