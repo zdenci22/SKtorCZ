@@ -73,6 +73,7 @@ async function searchTorrents(query) {
     try {
         const session = axios.create({ headers: { Cookie: `uid=${SKT_UID}; pass=${SKT_PASS}` } });
         const res = await session.get(SEARCH_URL, { params: { search: query, category: 0 } });
+        console.log(`[INFO] 🔎 Hľadám RES '${res}' na SKTorrent...`);
         const $ = cheerio.load(res.data);
         const posters = $('a[href^="details.php"] img');
         const results = [];
@@ -209,3 +210,4 @@ builder.defineCatalogHandler(({ type, id }) => {
 console.log("\ud83d\udccc Manifest debug výpis:", builder.getInterface().manifest);
 serveHTTP(builder.getInterface(), { port: 7000 });
 console.log("\ud83d\ude80 SKTorrent addon beží na http://localhost:7000/manifest.json");
+
