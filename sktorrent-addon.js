@@ -14,7 +14,7 @@ const SEARCH_URL = `${BASE_URL}/torrent/torrents_v2.php`;
 
 const builder = addonBuilder({
     id: "org.stremio.sktorrent",
-    version: "1.0.7",
+    version: "1.0.8",
     name: "SKtorCZ",
     description: "Streamuj torrenty z SKTorrent.eu (filmy aj seriály)",
     types: ["movie", "series"],
@@ -105,9 +105,8 @@ async function searchTorrents(query) {
         });
         console.log(`[INFO] 📦 Nájdených torrentov: ${results.length}`);
         return results;
-    } catch (err) {
-        console.log(`[INFO] 🔎 Hľadám RES '${res}' na SKTorrent...`);
-        console.error("[ERROR] Vyhľadávanie zlyhalo:", err.message);
+    } catch (res) {
+        console.error(`[ERROR] Vyhľadávanie zlyhalo: '${query}' `);
         return [];
     }
 }
@@ -214,6 +213,7 @@ builder.defineCatalogHandler(({ type, id }) => {
 console.log("\ud83d\udccc Manifest debug výpis:", builder.getInterface().manifest);
 serveHTTP(builder.getInterface(), { port: 7000 });
 console.log("\ud83d\ude80 SKTorrent addon beží na http://localhost:7000/manifest.json");
+
 
 
 
